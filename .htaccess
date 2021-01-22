@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+# RewriteBase /punit/mylighthere/
+
+# Removes index.php from ExpressionEngine URLs
+# RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+# RewriteCond %{REQUEST_URI} !/system/.* [NC]
+# RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+
+# Directs all EE web requests through the site index file	
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?/$1 [L]
+</IfModule>
+#AuthType Basic
+#AuthName "Restricted Area"
+AuthUserFile /home/urquesep/public_html/mylighthere.com/.htpasswd
+#require valid-user
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit
